@@ -1,31 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 :root {
-  /* Single solid background for whole site */
-  --bg: #0b1020;
+  --bg: #020617;
   --bg-card: rgba(255, 255, 255, 0.03);
   --bg-card-hover: rgba(255, 255, 255, 0.06);
   --text: #e4e4e7;
-  --text-muted: #a1a1aa;
+  --text-muted: #94a3b8;
   --accent: #6366f1;
   --accent-light: #818cf8;
   --border: rgba(255, 255, 255, 0.08);
   --gradient-1: #6366f1;
   --gradient-2: #8b5cf6;
-}
-
-/* Light theme overrides */
-:root[data-theme='light'] {
-  --bg: #f6f7fb;
-  --bg-card: rgba(17, 24, 39, 0.04);
-  --bg-card-hover: rgba(17, 24, 39, 0.06);
-  --text: #0f172a;
-  --text-muted: rgba(15, 23, 42, 0.7);
-  --accent: #4f46e5;
-  --accent-light: #4338ca;
-  --border: rgba(15, 23, 42, 0.12);
-  --gradient-1: #4f46e5;
-  --gradient-2: #7c3aed;
 }
 
 * {
@@ -57,57 +43,25 @@ a {
   text-decoration: none;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-.section {
-  padding: 100px 0;
-  position: relative;
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.section-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  margin-bottom: 60px;
-  letter-spacing: -0.02em;
+::-webkit-scrollbar-track {
+  background: #020617;
 }
 
-.section-title .accent {
-  color: var(--accent);
-  background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 3px;
 }
 
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-  color: white;
-  border: none;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--text);
-  border: 2px solid var(--border);
-}
-
-.btn-outline:hover {
-  border-color: var(--accent);
-  color: var(--accent-light);
+::-webkit-scrollbar-thumb:hover {
+  background: #818cf8;
 }

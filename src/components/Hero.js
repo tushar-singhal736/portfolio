@@ -4,14 +4,13 @@ import { profile } from "../config/profile";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export default function Hero() {
-
   const { name, tagline, taglineTech, photo, resume, resumeLabel, roleBadges } = profile;
 
   const titles = useMemo(() => {
     return roleBadges || [
-      "MERN Stack Developer",
       "Full Stack Developer",
-      "React Developer"
+      "MERN Stack Developer",
+      "React Developer",
     ];
   }, [roleBadges]);
 
@@ -21,9 +20,7 @@ export default function Hero() {
   const [typingSpeed, setTypingSpeed] = useState(100);
 
   useEffect(() => {
-
     const handleTyping = () => {
-
       const i = loopNum % titles.length;
       const fullText = titles[i];
 
@@ -37,95 +34,58 @@ export default function Hero() {
 
       if (!isDeleting && displayText === fullText) {
         setTimeout(() => setIsDeleting(true), 2000);
-      }
-
-      else if (isDeleting && displayText === "") {
+      } else if (isDeleting && displayText === "") {
         setIsDeleting(false);
         setLoopNum(loopNum + 1);
       }
-
     };
 
     const timer = setTimeout(handleTyping, typingSpeed);
     return () => clearTimeout(timer);
-
   }, [displayText, isDeleting, loopNum, typingSpeed, titles]);
 
-
   return (
-
     <section id="hero" className="hero">
-
       <div className="hero-wrapper">
-
         <div className="hero-content">
 
           {/* PHOTO */}
-
           <motion.div
             className="hero-photo-wrap"
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-
             <div className="hero-photo-frame">
-
-              <img
-                src={photo}
-                alt={name}
-                className="hero-photo-img"
-              />
-
+              <img src={photo} alt={name} className="hero-photo-img" />
             </div>
-
           </motion.div>
 
-
           {/* TEXT */}
-
-          <div className="hero-text">
-
-            <h1 className="hero-name">
-              {name}
-            </h1>
-
+          <motion.div
+            className="hero-text"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <h1 className="hero-name">{name}</h1>
 
             <div className="hero-typing">
-
-              <span className="hero-typing-muted">
-                Hi, I am
-              </span>
-
-              <span className="hero-typing-accent">
-                {displayText}
-              </span>
-
-              <span className="hero-typing-caret"></span>
-
+              <span className="hero-typing-muted">Hi, I am a</span>
+              <span className="hero-typing-accent">{displayText}</span>
+              <span className="hero-typing-caret" />
             </div>
 
-
-            <p className="hero-tagline">
-              {tagline}
-            </p>
-
+            <p className="hero-tagline">{tagline}</p>
 
             <div className="hero-tagline-tech">
               {taglineTech.join(" • ")}
             </div>
 
-
             <div className="hero-cta">
-
-              <a
-                href="#projects"
-                className="btn btn-primary"
-              >
+              <a href="#projects" className="btn btn-primary">
                 My Projects
               </a>
-
-
               <a
                 href={resume}
                 target="_blank"
@@ -134,51 +94,43 @@ export default function Hero() {
               >
                 {resumeLabel}
               </a>
-
             </div>
-
-          </div>
+          </motion.div>
 
         </div>
-
       </div>
 
-
       {/* SOCIAL ICONS */}
-
-      <div className="hero-social">
-
+      <motion.div
+        className="hero-social"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+      >
         <a
           href="https://github.com/tushar-singhal736"
           target="_blank"
           rel="noopener noreferrer"
           className="social-icon"
+          aria-label="GitHub"
         >
           <FaGithub />
         </a>
-
         <a
           href="https://www.linkedin.com/in/tushar-singhal-a51a40339/"
           target="_blank"
           rel="noopener noreferrer"
           className="social-icon"
+          aria-label="LinkedIn"
         >
           <FaLinkedinIn />
         </a>
-
-      </div>
-
+      </motion.div>
 
       {/* Scroll Indicator */}
-
       <div className="hero-scroll">
-
-        <div className="scroll-indicator"></div>
-
+        <div className="scroll-indicator" />
       </div>
-
     </section>
-
   );
-
 }
